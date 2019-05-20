@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+var obj1 = {
+    a:2,
+    e : {
+        n:6,
+        m:8,
+        g:{
+            h:6,
+            f:9
+        }
+    },
+    b:6,
+    d : [1,4,5,9]
+};
+var obj2 = {};
+deepcopy(obj1,obj2);
+function deepcopy(first ,second){
+    if(Array.isArray(first)){
+        for(var a = 0 ; a < first.length ; a++){
+            second[a] = first[a];
+        }
+    }
+    else if(typeof(first) === "object"){
+    for(var abc in first){
+        if(typeof(first[abc]) === "object"){
+            second[abc] = {};
+           deepcopy(first[abc],second[abc]);
+        }
+        else
+        second[abc]=first[abc];
+    }
+    }
+}
+</script>
+</html>
